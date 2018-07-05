@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		h2{
+			width: 300px;	
+			height: 200px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<h2>dom2级事件设置</h2>
+</body>
+</html>
+
+<script type="text/javascript">
+	var hh = document.getElementsByTagName('h2')[0];
+	hh.addEventListener('mouseover', function () {
+		//改变背景颜色
+		// hh 或 this 他们代表的对象是一直的,都是h2标题标签的元素节点
+		hh.style.backgroundColor = 'lightblue';
+	});
+	hh.addEventListener('mouseout',function() {
+		hh.style.backgroundColor = 'pink';
+	});
+
+	function f1() {
+		console.log(1111);
+	}
+	hh.addEventListener('click',f1);
+	hh.removeEventListener('click', f1);
+	
+</script>

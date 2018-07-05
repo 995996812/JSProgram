@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>被创建的子窗口</title>
+	<script type="text/javascript">
+
+		window.onload = function () {
+			var lii = document.getElementsByTagName('li');
+			for (var i = 0; i < lii.length; i++) {
+				lii[i].onclick = function(){
+					alert(this.firstChild.nodeValue); 
+					//opener 带包当前页面父级窗口引用
+					opener.document.getElementsByTagName('h2')[0].innerHTML += this.firstChild.nodeValue;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+	</ul>
+</body>
+</html>

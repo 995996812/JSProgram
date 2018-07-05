@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>阻止浏览器默认动作</h2>
+	<form action="#" method="post">
+		<p>用户名: <input type="text" name="username"></p>
+		<p>密码: <input type="text" name="userpwd"></p>
+		<p>邮箱: <input type="text" name="useremail"></p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+</body>
+</html>
+
+<script type="text/javascript">
+	//对表单进行验证,如果验证不正确,浏览器禁止跳转
+	var fm = document.getElementsByTagName('form')[0];
+	// fm.onsubmit = function() {
+
+	// 	alert('邮箱格式不正确');
+	// 	return false; //停止浏览器跳转  只针对dom1级事件起作用
+	// };
+	fm.addEventListener('submit', function(event){
+		alert('邮箱格式不正确');
+		event.preventDefault(); //dom1 dom2都起作用 阻止浏览器跳转
+	});
+
+</script>

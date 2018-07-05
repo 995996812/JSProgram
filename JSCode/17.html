@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包操作事件</title>
+	<script type="text/javascript">
+		window.onload = function () {
+			var lis = document.getElementsByTagName('li');
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].onmouseover = over(i);
+				lis[i].onmouseout = out(i);
+
+			}
+			//  鼠标放上去事件
+			function over(n) {
+					function over_internal() {
+					lis[n].style.backgroundColor = 'pink';
+				}
+				return over_internal;
+			}
+			//鼠标移开事件
+			function out(n) {
+				function out_internal() {
+					lis[n].style.backgroundColor = '';
+				}
+				return out_internal;
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<ul>
+		<li>奔驰</li>
+		<li>宝马</li>
+		<li>奥迪</li>
+	</ul>
+</body>
+</html>

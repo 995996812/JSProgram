@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>节点的创建与追加</h2>
+
+	<input type="button" value="追加" onclick="f1()">
+</body>
+</html>
+
+<script type="text/javascript">
+	var ull = document.createElement('ul');
+	var provinces = ['辽宁','山东','浙江'];
+	var citys = ['沈阳','济南','杭州'];
+
+	for (var index in provinces) {
+		//创建li的元素节点
+		var lii = document.createElement('li');
+		//创建li内部的文本节点
+		var txt = document.createTextNode(provinces[index]);
+		//给li节点设置属性
+		lii.setAttribute('city', citys[index]);
+		if (String(citys[index]) == '济南') {
+			lii.setAttribute('id', 'shan');
+		}
+		//给li追加文本节点
+		lii.appendChild(txt);
+		//给ul追加li节点
+		ull.appendChild(lii);
+	}
+	//给body标签追加ul
+	document.getElementsByTagName('body')[0].appendChild(ull);
+
+	//少量追加节点
+	function f1() {
+		var lii = document.createElement('li');
+		var txt = document.createTextNode('广东');
+		lii.setAttribute('city', '广州');
+		//给li追加文本
+		lii.appendChild(txt);
+
+		//给ul追加li
+		// document.getElementsByTagName('ul')[0].appendChild(lii);
+		
+		//追加li节点在山东节点前面
+		// var shan = document.getElementById('shan');
+		// document.getElementsByTagName('ul')[0].insertBefore(lii,shan);
+		
+		// 替换
+		var shan = document.getElementById('shan');
+		if (shan) {
+			document.getElementsByTagName('ul')[0].replaceChild(lii,shan);
+		}
+
+
+	}
+</script>

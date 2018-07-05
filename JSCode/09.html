@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		function f1() {
+			//获取浏览器地址栏信息
+			console.log(window.location.href);
+		}
+
+		function f2() {
+			//设置地址栏信息(通过js让页面发生跳转)
+			window.location.href = "./08.html";
+		}
+	</script>
+</head>
+<body>
+	<h2></h2>
+	<input type="button" value="获取" onclick="f1()">
+	<input type="button" value="设置" onclick="f2()">
+</body>
+</html>

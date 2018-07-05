@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function f1() {
+			var week = "sunday";
+			return function f2() {
+				console.log('星期: ' + week);
+			}
+		}
+		var ff = f1();
+		//调用闭包函数ff
+		ff();// 输出结果   星期: sunday
+		/**
+		 f2 和 ff是同一个function的两个不同名字,f2是局部变量,ff是全局变量,因此,该function可以在"内部,外部"环境同事访问,无论是内部还是外部环境,只要function执行,就与具体上下级坏境没直接关系,内部的week永远都是我们自己AO活动对象的属性.因此,只要该
+		 function能访问到,就无视内部变量的来源,其就是函数AO活动对象的属性,是固化好的.
+		 */
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

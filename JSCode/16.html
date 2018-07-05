@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 闭包 - 创建数组元素
+		var arr = new Array();
+
+		for (var i = 0; i < 4; i++) {
+			arr[i] = f1(i);
+		}
+
+		function f1(n) {
+			return function f2() {
+				console.log(n);
+			}
+		}
+
+		arr[3](); // 3
+		arr[0](); // 0
+		arr[1](); // 1
+		arr[2](); // 2
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

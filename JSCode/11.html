@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		function create() {
+			//open(被打开的页面,打开形式,页面规格  不设置就是全部 )
+			//打开形式: 类似a标签的target属性 _self/_top/_blank/frame的name属性值
+			open("./12.html", "_blank");
+		}
+	</script>
+</head>
+<body>
+	<h2>open()创建子窗口</h2>
+	<input type="button" value="创建子窗口" onclick="create()">
+</body>
+</html>

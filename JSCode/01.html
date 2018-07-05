@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		
+	</script>
+</head>
+<body>
+	<!-- <h2>文本信息</h2> -->
+	<input type="text" id="username" value="xiaoming"> <br>
+	<input type="text" id="useremail" value="xiaoming@163.com"> <br>
+	<input type="text" id="usertel" value="123456721"> <br>
+	<h2>子节点和兄弟节点</h2>
+	<ul>
+		<li>北</li>
+		<li>上</li>
+		<li>广</li>
+		<li>重庆</li>
+	</ul>
+</body>
+</html>
+
+<script type="text/javascript">
+	//1. doucument.getElementById(id属性值);
+	var email = document.getElementById('useremail');
+	console.log(email);
+	var usertel = document.getElementById('usertel');
+	console.log(usertel);
+	// 2.通过标签名称获取
+	var tag = document.getElementsByTagName('input');
+	console.log(tag);
+	// 3. 获取文本节点
+	var hh = document.getElementsByTagName('h2')[0];
+	console.log(hh.firstChild);
+	//通过文本节点 获得对应的文本信息
+	console.log(hh.firstChild.nodeValue);
+
+	//父节点获得内部全部子节点信息
+	var uls =document.getElementsByTagName('ul')[0];
+	console.log(uls.childNodes.length);
+	//获取广的li节点  查找上下的兄弟节点
+	var guang = document.getElementsByTagName('li')[2];
+	console.log(guang.nextSibling.nextSibling);
+	console.log(guang.previousSibling.previousSibling);
+
+	//获取父节点
+	var shang = document.getElementsByTagName('li')[1];
+	console.log(shang.parentNode);
+</script>

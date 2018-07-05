@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>属性操作</h2>
+	<input type="text" name="username" value="tom" class="orange" weight='130'> <br>
+	<input type="button" value="获取" onclick="f1()">
+	<input type="button" value="设置" onclick="f2()">
+</body>
+</html>
+
+<script type="text/javascript">
+
+	var inp = document.getElementsByTagName('input')[0];
+	//获取节点属性值
+	function f1() {
+		console.log(inp.type);
+		console.log(inp.name);
+		console.log(inp.value);
+		console.log(inp.className); //class是js的关键字,需要使用className来进行操作
+
+		console.log(inp.getAttribute('weight'));
+	}
+	//设置节点属性值
+	function f2() {
+		
+		inp.name = 'usertel';
+		inp.value = '123456789';
+		inp.className = 'bananer';
+
+		inp.setAttribute('weight', '120') //weight 为自定义的属性,需要使用setAttribute来定义
+	}
+	//以对象形式返回对应节点背部的全部属性节点信息
+	//各个属性节点就是'对象'的成员属性
+	console.log(inp.attributes);
+	//获得具体属性节点
+	console.log(inp.attributes.value);
+	console.log(inp.attributes.value.nodeType);
+	console.log(inp.nodeType);
+</script>

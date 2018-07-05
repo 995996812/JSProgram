@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+
+		var str = "作用域链";
+		function f1() {
+			console.log('f1: '+str);
+			function f2() {
+				console.log('f2: '+str);
+				function f3() {
+					console.log('f3: '+str);
+				}
+				f3();
+			}
+			f2();
+		}
+		f1();
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

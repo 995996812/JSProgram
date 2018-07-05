@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function showtime() {
+			// 客户端获得时间信息(年月日-时分秒)
+			var mytime = new Date();
+			var year = mytime.getFullYear();
+			var month = mytime.getMonth();
+			var qi = mytime.getDate();
+
+			var hour = mytime.getHours();
+			var min = mytime.getMinutes();
+			var seconds = mytime.getSeconds();
+			//拼装时间
+			var timeinfo = year + "-" + month + "-" + qi + " " + hour + ":" + min + ":" +seconds;
+			document.getElementById('result').innerHTML = timeinfo;
+		}
+		var timer = "";
+		window.onload = function(){
+			start();
+		}
+
+		function stop() {
+			clearInterval(timer);
+		}
+
+		function start() {
+			timer = setInterval("showtime()", 1000);
+		}
+	</script>
+</head>
+<body>
+	<h2>电子表</h2>
+	<div id="result"></div>
+	<input type="button" value="停止计时器" onclick="stop()">
+	<input type="button" value="开启计时器" onclick="start()">
+</body>
+</html>

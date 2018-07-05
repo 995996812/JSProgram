@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<!-- dom只能获取行内样式 -->
+	<h2 style="width: 300px; height: 200px; background-color: lightgreen">DOM修改css样式操作</h2>
+
+	<input type="button" value="获取样式" onclick="f1()">
+	<input type="button" value="修改样式" onclick="f2()">
+</body>
+</html>
+
+<script type="text/javascript">
+	var hh = document.getElementsByTagName('h2')[0];
+	function f1() {//获取样式
+		console.log(hh.style.width); //获取宽度
+		console.log(hh.style.height);//获取高度
+		console.log(hh.style.backgroundColor);//获取背景色
+	}
+
+	function f2() {//设置修改样式
+		hh.style.width = '500px';
+		hh.style.color = 'red';
+		hh.style.backgroundColor = 'black';
+	}
+</script>

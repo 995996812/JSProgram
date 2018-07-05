@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 300px;
+			height: 200px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<h2>事件对象操作</h2>
+</body>
+</html>
+
+<script type="text/javascript">
+	var hh = document.getElementsByTagName('h2')[0];
+	hh.onclick = function (evt) {
+		alert(evt);
+	};
+</script>
