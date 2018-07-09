@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//调用其他函数call方式
+		// 函数.call(函数内部this的指引,实参,实参,.....)
+		var catname = "加菲猫";
+		function getInfo() {//函数
+			console.log(this.catname + '点着它的脚尖');
+		}
+		var cat = {catname: '波斯猫'}//对象
+
+		getInfo.call(cat);
+
+		function eating(mingzi) {
+			console.log(mingzi + "在吃肉");
+		}
+
+		var dog = {mingzi: '微笑天使'};
+
+		eating.call(dog, dog.mingzi);
+		// apply的方式
+		// 函数.apply(函数内部this的指引,[实参,实参,实参...]) 实参是传实参数组
+		eating.apply(dog, [dog.mingzi]);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

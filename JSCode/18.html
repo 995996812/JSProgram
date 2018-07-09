@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字面量方式创建对象</title>
+	<script type="text/javascript">
+		var dog = {}; //创建一个空对象
+		var cat = {color:'gray',age:3,climb:function () {console.log('吃吃吃')}}//创建有默认成员的变量
+		//对象访问成员: 对象.成员名称  或  对象[成员名称]
+		console.log(cat.color); //gray
+		console.log(cat[age]);//3
+		cat.climb();//吃吃吃
+
+		//给对象添加成员
+		//对象.名称 = 值  对象[名称] = 值
+		cat.sex = "公";
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

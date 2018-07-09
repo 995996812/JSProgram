@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象调用其他函数或(其他对象)方法</title>
+	<script type="text/javascript">
+		//1. 调用其他函数
+		var catname = "加菲猫";
+		function getInfo() {//函数
+			console.log(this.catname);
+		}
+		var cat = {catname: '波斯猫'}//对象
+
+		//给cat添加一个成员方法出来
+		cat.express = getInfo;
+		cat.express();
+
+		//2.调用其他对象方法
+		var cat2 = {mingzi: "波斯猫", eat: function () {
+			console.log(this.mingzi+'吃鱼')
+		}};
+		var tiger = {mingzi: "东北虎", act: function () {
+			console.log("猛虎下山")
+		}};
+
+		cat2.eat();
+		//使得tiger也会去调用eat方法
+		tiger.chi = cat2.eat; //eat函数是对象的引用赋值
+		tiger.chi();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

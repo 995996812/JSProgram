@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>构造函数方式创建对象</title>
+	<script type="text/javascript">
+		//构造函数创建对象
+		function Animal(nm) {
+			this.height = 120;
+			this.color = "black";
+			this.name = nm;
+		}
+		//会使得Animal函数发生自动调用
+		//在php里边,new类会使得构造函数__construct自动执行
+		//因此该方式称为构造函数方式创建对象
+		var pig = new Animal('koro');
+		console.log(pig); //Animal{height = 120, color="black"}
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
