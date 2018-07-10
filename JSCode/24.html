@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<!-- 使用闭包给无序列表添加点击事件 -->
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li>深圳</li>
+	</ul>
+</body>
+</html>
+
+<script type="text/javascript">
+	var lis = document.getElementsByTagName("li");
+
+	for (var i = 0; i < lis.length; i++) {
+		lis[i].onclick = (function (n) {
+			return function () {
+				alert(lis[n].firstChild.nodeValue);
+			}
+		})(i)
+	}
+
+	// function f1(n){
+	// 	function f2(){
+	// 		alert(lis[n].firstChild.nodeValue);
+	// 	}
+	// 	return f2;
+	// }
+	// function f1(n){
+	// 	return function (){
+	// 		alert(lis[n].firstChild.nodeValue);
+	// 	}
+	// }
+</script>
