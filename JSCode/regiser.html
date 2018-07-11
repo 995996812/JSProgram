@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script>
+		window.onload = function () {
+			//设置提交事件
+			var fm = document.getElementsByTagName('form')[0];
+
+			fm.onsubmit = function () {
+				
+				//验证邮箱是否合法
+				//获取用户输入的邮箱信息
+				var email = document.getElementById('email').value;
+				//匹配邮箱的正则
+				var emailReg = /^[a-zA-z1-9][0-9a-zA-Z\._]+@[0-9a-z]+(\.[a-z]+$)/;
+				if (email.match(emailReg) === null) {
+					alert('邮箱格式不正确')
+					return false;
+				}
+			};
+		}
+
+	</script>
+</head>
+<body>
+	<h2>注册表单</h2>
+	<form method = "post" action="#">
+		<p>用户名: <input type="text" id="username"></p>
+		<p>邮箱: <input type="text" id="email"></p>
+		<p>手机号: <input type="text" id="phone"></p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+</body>
+</html>

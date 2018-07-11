@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		//1.绘制地图
+		function Map() {
+			//私有成员(不会随便发生变化)
+			var w = 800;
+			var h = 400;
+			//成员方法,展示地图
+			this.showap = function () {
+				//创建div,设置css样式,追加给body
+				var tu = document.createElement('div');
+				tu.style.width = w+"px";
+				tu.style.height = h+"px";
+				tu.style.backgroundColor = 'pink';
+				document.body.appendChild(tu);
+			}
+		}
+		// 2.绘制食物
+		function Food() {
+			var len = 20;
+			//绘制
+			this.showfood = function () {
+				var piece = document.createElement('div');
+				piece.style.width = piece.style.height = len+"px";
+				piece.style.backgroundColor = 'green';
+				piece.style.position = 'absolute';
+				//食物设置绝对定位
+				//食物位置随机摆放  移动步进值: 20px
+				// 食物权值坐标 X:(0-39) Y:(0-19)
+				// 食物真实坐标: 权值坐标 * 步进值 
+				var xFood = Math.floor(Math.random()*40); // 0 -39 的随机数
+				var yFood = Math.floor(Math.random()*20); // 0 -19 的随机数
+				piece.style.left = xFood*len+'px';
+				piece.style.top = yFood*len+'px';
+				document.body.appendChild(piece);
+			}
+		}
+		//3. 绘制小蛇
+		function Snake() {
+			var len = 20;
+			this.redirect = 'right';//小蛇移动方向,默认向右
+
+			this.snakebody = [[0,1,'green',null],[1,1,'green',null],[2,1,'green',null],[3,1,'red',null]];
+			//绘制蛇
+			this.showsnake = function () {
+				//遍历蛇的各个蛇节,并依次创建即可
+				for (var i = 0; i < this.snakebody.length; i++) {
+					// this.snakebody[i]
+					//创建蛇节div
+					if (this.snakebody[i][3] == null) {//判断当前蛇节是否已经创建好
+						this.snakebody[i][3] = document.createElement('div');
+						//创建css样式
+						this.snakebody[i][3].style.width = this.snakebody[i][3].style.height = len+'px';
+						this.snakebody[i][3].style.backgroundColor = this.snakebody[i][2];
+						//设置定位
+						this.snakebody[i][3].style.position = 'absolute';
+
+						document.body.appendChild(this.snakebody[i][3]);
+					}
+
+					this.snakebody[i][3].style.left = this.snakebody[i][0]*len+'px';
+					this.snakebody[i][3].style.top = this.snakebody[i][1]*len+'px';
+
+					
+				}
+			}
+			//移动蛇
+			this.movesnake = function () {
+				//非蛇头蛇节(当前蛇节的新坐标,是下个蛇节的旧坐标)
+				for (var i = 0; i < this.snakebody.length-1; i++) {
+					this.snakebody[i][0] = this.snakebody[i+1][0]; //x
+					this.snakebody[i][1] = this.snakebody[i+1][1]; //y
+				}
+
+				if (this.redirect == 'right') {
+					//蛇头x轴累积
+					this.snakebody[this.snakebody.length - 1][0] += 1;
+				}
+				if (this.redirect == 'left') {
+					//蛇头x轴递减
+					this.snakebody[this.snakebody.length - 1][0] -= 1;
+				}
+				if (this.redirect == 'up') {
+					//蛇头y轴递减
+					this.snakebody[this.snakebody.length - 1][1] -= 1;
+				}
+				if (this.redirect == 'down') {
+					//蛇头y轴递增
+					this.snakebody[this.snakebody.length - 1][1] += 1;
+				}
+
+				//根据新坐标,重新绘制蛇
+				this.showsnake();
+			}
+		}
+		
+
+		window.onload = function () {
+			var map = new Map();
+			map.showap();
+
+			var food = new Food();
+			food.showfood();
+
+			snake = new Snake();
+			snake.showsnake();
+
+			//移动蛇
+			//setInterval(全局变量, 时间)
+			setInterval("snake.movesnake()", 600);
+			console.log(111);
+			//设置键盘事件,控制方向
+			document.onkeydown=function(event){//38上 40下 37左 39右
+				 var num = event.keyCode;
+
+				 switch (num) {
+				 	case 38://上
+				 		snake.redirect = 'up';
+				 		break;
+				 	case 40://下
+				 		snake.redirect = 'down';
+				 		break;
+				 	case 37://左
+				 		snake.redirect = 'left';
+				 		break;
+				 	case 39://右
+				 		snake.redirect = 'right';
+				 		break;
+				 	default:
+				 		break;
+				 }
+			}
+		}
+	</script>
+
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+</html>
