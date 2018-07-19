@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建AJAX对象</title>
+	<script type="text/javascript">
+		//兼容模式处理
+		if (typeof ActiveXObject !== 'undefined') {
+		//IE6 7 8 创建AJAX对象的方式
+		//var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+		// var xhr = new ActiveXObject("Msxml.XMLHTTP");
+		// var xhr = new ActiveXObject("Msxml.XMLHTTP.3.0");
+		// var xhr = new ActiveXObject("Msxml.XMLHTTP.5.0");
+			var xhr = new ActiveXObject("Msxml.XMLHTTP.6.0");
+		}else{
+			// 主流浏览器创建AJAX方式]
+			var xhr = new XMLHttpRequest();
+			console.log(xhr);
+		}
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

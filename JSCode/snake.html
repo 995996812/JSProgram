@@ -23,21 +23,28 @@
 		// 2.绘制食物
 		function Food() {
 			var len = 20;
+			//记录食物的权值坐标
+			this.xFood = 0;
+			this.yFood = 0;
+
+			this.piece = null;
 			//绘制
 			this.showfood = function () {
-				var piece = document.createElement('div');
-				piece.style.width = piece.style.height = len+"px";
-				piece.style.backgroundColor = 'green';
-				piece.style.position = 'absolute';
+				if (this.piece == null) {
+					this.piece = document.createElement('div');
+					this.piece.style.width = this.piece.style.height = len+"px";
+					this.piece.style.backgroundColor = 'green';
+					this.piece.style.position = 'absolute';
+					document.body.appendChild(this.piece);
+				}
 				//食物设置绝对定位
 				//食物位置随机摆放  移动步进值: 20px
 				// 食物权值坐标 X:(0-39) Y:(0-19)
 				// 食物真实坐标: 权值坐标 * 步进值 
-				var xFood = Math.floor(Math.random()*40); // 0 -39 的随机数
-				var yFood = Math.floor(Math.random()*20); // 0 -19 的随机数
-				piece.style.left = xFood*len+'px';
-				piece.style.top = yFood*len+'px';
-				document.body.appendChild(piece);
+				this.xFood = Math.floor(Math.random()*40); // 0 -39 的随机数
+				this.yFood = Math.floor(Math.random()*20); // 0 -19 的随机数
+				this.piece.style.left = this.xFood*len+'px';
+				this.piece.style.top = this.yFood*len+'px';
 			}
 		}
 		//3. 绘制小蛇
@@ -93,7 +100,37 @@
 					//蛇头y轴递增
 					this.snakebody[this.snakebody.length - 1][1] += 1;
 				}
+				//吃食物,蛇头跟食物坐标相同,就吃食物
+				//蛇头坐标
+				var xSnake = this.snakebody[this.snakebody.length-1][0];
+				var ySnake = this.snakebody[this.snakebody.length-1][1];
+				//食物坐标
+				if (xSnake==food.xFood && ySnake==food.yFood) {
+					console.log('1111111');
+					//吃食物,增加蛇节,原食物消失
+					var x = this.snakebody[0][0];
+					var y = this.snakebody[0][1];
+					var newjie = [x,y,'green',null];
 
+					this.snakebody.unshift(newjie);//把newjie放到数组的第一个位置
+					//重新绘制食物
+					food.showfood();
+				}
+				//控制小蛇在地图范围内移动
+				if (xSnake<0 || xSnake>39 || ySnake<0 || ySnake>19) {
+					alert('Game Over');
+					clearInterval(mytime);
+					return;
+				}
+				//不能吃到自己(头部坐标不能与身子坐标一致)
+				for (var i = 0; i < this.snakebody.length - 1; i++) {
+					if (this.snakebody[i][0] == xSnake && this.snakebody[i][1] == ySnake) {
+						alert('Game Over');
+						clearInterval(mytime);
+						return;
+					}
+				}
+				
 				//根据新坐标,重新绘制蛇
 				this.showsnake();
 			}
@@ -104,7 +141,7 @@
 			var map = new Map();
 			map.showap();
 
-			var food = new Food();
+			food = new Food();//声明为全局的,以便在外部访问
 			food.showfood();
 
 			snake = new Snake();
@@ -112,7 +149,7 @@
 
 			//移动蛇
 			//setInterval(全局变量, 时间)
-			setInterval("snake.movesnake()", 600);
+			mytime = setInterval("snake.movesnake()", 200);
 			console.log(111);
 			//设置键盘事件,控制方向
 			document.onkeydown=function(event){//38上 40下 37左 39右
@@ -145,6 +182,6 @@
 	</style>
 </head>
 <body>
-	
+
 </body>
 </html>
