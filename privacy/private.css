@@ -1,0 +1,49 @@
+
+@font-face { 
+  font-family: SourceHanSansCN-Bold; 
+  src: url('SourceHanSansCN-Bold.otf');
+}
+div{margin:0;border:0;padding:0;}
+.title{
+	font-size: 16px;
+	text-align: center;
+	margin-top: 48px;
+	font-family: SourceHanSansCN-Bold;
+}
+.top{
+	font-size: 14px;
+	margin: 32px 24px 0px 24px;
+	font-family: SourceHanSansCN-Bold;
+}
+.middle{
+	font-size: 14px;
+	margin: 25px 24px 0px 24px;
+}
+
+.bottom{
+	font-size: 11px;
+	margin: 25px 24px 0px 24px;
+}
+.bottom p a{
+	text-decoration: none;
+	color: red;
+}
+
+.bottom_btn{
+	display: flex;
+	margin: 56px 24px 0px 24px;
+}
+.bottom_btn div{
+	flex: 1;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	font-family: SourceHanSansCN-Bold;
+}
+.button_left{
+	background-color: #F8F8FA;
+}
+.button_right{
+	background-color: #E50011;
+}
